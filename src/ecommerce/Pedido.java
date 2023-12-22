@@ -2,24 +2,20 @@ package ecommerce;
 
 import java.util.ArrayList;
 
-public class Pedido extends Modelo {
+public class Pedido extends Modelo implements OperacoesPedido {
 
-	private ArrayList<Produto> produtos;
+	private static ArrayList<Pedido> listaPedidos = new ArrayList<>();
+	private static int numeroPedido = 1;
 
-	public Pedido(String nome, int quantidade, float preco) {
-		super(nome, quantidade, preco);
-		this.produtos = new ArrayList<>();
+	public Pedido(int quantidadeProduto, float precoProduto, String nomeProduto) {
+	    super(numeroPedido, quantidadeProduto, precoProduto, nomeProduto);
+	    numeroPedido++;
+	    cadastrarPedido(this);
 	}
 
-	public ArrayList<Produto> getProdutos() {
-		return produtos;
-	}
-
-	public void setProdutos(ArrayList<Produto> produtos) {
-		this.produtos = produtos;
-	}
-
-	public void adicionarProduto(Produto produto) {
-		produtos.add(produto);
+	@Override
+	public void cadastrarPedido(Pedido pedido) {
+		listaPedidos.add(pedido);
+		System.out.println("Pedido cadastrado com sucesso!");
 	}
 }

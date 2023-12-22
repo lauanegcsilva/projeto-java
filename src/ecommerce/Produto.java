@@ -3,64 +3,29 @@ package ecommerce;
 import java.util.ArrayList;
 import java.util.Iterator;
 
-public class Produto {
+public class Produto extends Modelo implements OperacoesProduto {
 
-	private static ArrayList<Produto> listaProdutos = new ArrayList<Produto>();
-
-	private String nomeProduto;
-	private int quantidadeProduto;
-	private float precoProduto;
+	private static ArrayList<Produto> listaProdutos = new ArrayList<>();
 
 	public Produto(String nomeProduto, int quantidadeProduto, float precoProduto) {
-		this.nomeProduto = nomeProduto;
-		this.quantidadeProduto = quantidadeProduto;
-		this.precoProduto = precoProduto;
+		super(0, quantidadeProduto, precoProduto, nomeProduto);
 	}
 
-	public static ArrayList<Produto> getListaProdutos() {
-		return listaProdutos;
-	}
-
-	public static void setListaProdutos(ArrayList<Produto> listaProdutos) {
-		Produto.listaProdutos = listaProdutos;
-	}
-
-	public String getNomeProduto() {
-		return nomeProduto;
-	}
-
-	public void setNomeProduto(String nomeProduto) {
-		this.nomeProduto = nomeProduto;
-	}
-
-	public int getQuantidadeProduto() {
-		return quantidadeProduto;
-	}
-
-	public void setQuantidadeProduto(int quantidadeProduto) {
-		this.quantidadeProduto = quantidadeProduto;
-	}
-
-	public float getPrecoProduto() {
-		return precoProduto;
-	}
-
-	public void setPrecoProduto(float precoProduto) {
-		this.precoProduto = precoProduto;
-	}
-
-	public static void cadastrarProduto(Produto produto) {
+	@Override
+	public void cadastrarProduto(Produto produto) {
 		listaProdutos.add(produto);
 		System.out.println("Produto cadastrado com sucesso!");
 	}
 
-	public static void listarProdutos() {
+	@Override
+	public void listarProdutos() {
 		for (Produto produto : listaProdutos) {
 			produto.visualizarProduto();
 		}
 	}
 
-	public static void excluirProduto(String nomeProduto) {
+	@Override
+	public void excluirProduto(String nomeProduto) {
 		Iterator<Produto> iterator = listaProdutos.iterator();
 		while (iterator.hasNext()) {
 			Produto produto = iterator.next();
@@ -73,7 +38,8 @@ public class Produto {
 		System.out.println("Produto não encontrado.");
 	}
 
-	public static void atualizarProduto(String nomeProduto, int novaQuantidade, float novoPreco) {
+	@Override
+	public void atualizarProduto(String nomeProduto, int novaQuantidade, float novoPreco) {
 		for (Produto produto : listaProdutos) {
 			if (produto.getNomeProduto().equalsIgnoreCase(nomeProduto)) {
 				produto.setQuantidadeProduto(novaQuantidade);
@@ -93,5 +59,4 @@ public class Produto {
 		System.out.println("Quantidade do Produto: " + this.getQuantidadeProduto());
 		System.out.println("Preço do Produto: " + this.getPrecoProduto());
 	}
-
 }

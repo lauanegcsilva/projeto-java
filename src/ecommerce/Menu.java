@@ -54,42 +54,61 @@ public class Menu {
 				precoProduto = leia.nextFloat();
 
 				Produto produto = new Produto(nomeProduto, quantidadeProduto, precoProduto);
-				Produto.cadastrarProduto(produto);
+				produto.cadastrarProduto(produto);
 
 				keyPress();
 				break;
 			case 2:
 				System.out.println("Listar Produtos\n\n");
-				Produto.listarProdutos();
+
+				Produto produtoListagem = new Produto("", 0, 0);
+				produtoListagem.listarProdutos();
 
 				keyPress();
 				break;
 			case 3:
 				System.out.println("Excluir Produto\n\n");
 
+				Produto produtoExclusao = new Produto("", 0, 0);
 				System.out.println("Digite o nome do produto a ser excluído: ");
 				nomeProduto = leia.nextLine();
-				Produto.excluirProduto(nomeProduto);
+				produtoExclusao.excluirProduto(nomeProduto);
 
 				keyPress();
-
 				break;
 			case 4:
 				System.out.println("Atualizar Produto\n\n");
 
+				Produto produtoAtualizacao = new Produto("", 0, 0);
 				System.out.println("Digite o nome do produto a ser atualizado: ");
 				nomeProduto = leia.nextLine();
+
 				System.out.println("Digite a nova quantidade do produto: ");
 				quantidadeProduto = leia.nextInt();
+
 				System.out.println("Digite o novo preço do produto: ");
 				precoProduto = leia.nextFloat();
 
-				Produto.atualizarProduto(nomeProduto, quantidadeProduto, precoProduto);
+				produtoAtualizacao.atualizarProduto(nomeProduto, quantidadeProduto, precoProduto);
 
+				keyPress();
 				break;
 			case 5:
 				System.out.println("Cadastrar Pedido\n\n");
 
+				System.out.println("Digite a quantidade do produto: ");
+				quantidadeProduto = leia.nextInt();
+
+				System.out.println("Digite o preço do produto: ");
+				precoProduto = leia.nextFloat();
+				leia.nextLine();
+
+				System.out.println("Digite o nome do produto: ");
+				nomeProduto = leia.nextLine();
+
+				Pedido novoPedido = new Pedido(quantidadeProduto, precoProduto, nomeProduto);
+
+				keyPress();
 				break;
 			default:
 				System.out.println("\nOpção Inválida!\n");

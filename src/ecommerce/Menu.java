@@ -25,7 +25,8 @@ public class Menu {
 			System.out.println("            3 - Excluir Produto                      ");
 			System.out.println("            4 - Atualizar Produto                    ");
 			System.out.println("            5 - Cadastrar Pedido                     ");
-			System.out.println("            6 - Sair                                 ");
+			System.out.println("            6 - Listar Pedidos                       ");
+			System.out.println("            7 - Sair                                 ");
 			System.out.println("                                                     ");
 			System.out.println("*****************************************************");
 			System.out.println("Entre com a opção desejada:                          ");
@@ -34,7 +35,7 @@ public class Menu {
 			opcao = leia.nextInt();
 			leia.nextLine();
 
-			if (opcao == 6) {
+			if (opcao == 7) {
 				System.out.println("\nLauane's Store agradece o seu contato!");
 				sobre();
 				leia.close();
@@ -45,7 +46,7 @@ public class Menu {
 			case 1:
 				System.out.println("Cadastrar Produto\n\n");
 
-				leia.nextLine();
+				
 				System.out.println("Digite o nome do produto: ");
 				nomeProduto = leia.nextLine();
 				System.out.println("Digite a quantidade do produto: ");
@@ -98,6 +99,7 @@ public class Menu {
 
 				System.out.println("Digite a quantidade do produto: ");
 				quantidadeProduto = leia.nextInt();
+				leia.nextLine();
 
 				System.out.println("Digite o preço do produto: ");
 				precoProduto = leia.nextFloat();
@@ -106,7 +108,15 @@ public class Menu {
 				System.out.println("Digite o nome do produto: ");
 				nomeProduto = leia.nextLine();
 
-				Pedido novoPedido = new Pedido(quantidadeProduto, precoProduto, nomeProduto);
+				Pedido novoPedido = new Pedido(nomeProduto, quantidadeProduto, precoProduto);
+
+				keyPress();
+				break;
+			case 6:
+				System.out.println("Listar Pedidos\n\n");
+
+				Pedido pedidoListagem = new Pedido("", 0, 0.0f);
+				pedidoListagem.listarPedidos();
 
 				keyPress();
 				break;

@@ -6,9 +6,10 @@ import java.util.Iterator;
 public class Produto extends Modelo implements OperacoesProduto {
 
 	private static ArrayList<Produto> listaProdutos = new ArrayList<>();
+	private static int proximoId = 1;
 
 	public Produto(String nomeProduto, int quantidadeProduto, float precoProduto) {
-		super(0, quantidadeProduto, precoProduto, nomeProduto);
+		super(proximoId++, nomeProduto, quantidadeProduto, precoProduto);
 	}
 
 	@Override

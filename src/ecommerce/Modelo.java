@@ -3,15 +3,16 @@ package ecommerce;
 public abstract class Modelo {
 
 	private int opcao;
+	private String nomeProduto;
 	private int quantidadeProduto;
 	private float precoProduto;
-	private String nomeProduto;
 
-	public Modelo(int opcao, int quantidadeProduto, float precoProduto, String nomeProduto) {
+	public Modelo(int opcao, String nomeProduto, int quantidadeProduto, float precoProduto) {
 		this.opcao = opcao;
+		this.nomeProduto = nomeProduto;
 		this.quantidadeProduto = quantidadeProduto;
 		this.precoProduto = precoProduto;
-		this.nomeProduto = nomeProduto;
+
 	}
 
 	public int getOpcao() {
@@ -44,5 +45,9 @@ public abstract class Modelo {
 
 	public void setNomeProduto(String nomeProduto) {
 		this.nomeProduto = nomeProduto;
+	}
+
+	public int getNumero() {
+		return opcao;
 	}
 }
